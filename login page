@@ -1,0 +1,160 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(SustainableVillageApp());
+}
+
+class SustainableVillageApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Sustainable Village',
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: WelcomePage(),
+    );
+  }
+}
+
+class WelcomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.green[100],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Welcome to Sustainable Village",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            Text(
+              "Join us in building self-sufficient and eco-friendly villages!",
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },
+              child: Text("Login"),
+            ),
+            SizedBox(height: 10),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpPage()),
+                );
+              },
+              child: Text("Sign Up"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Login")),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(decoration: InputDecoration(labelText: "Email")),
+            TextField(
+              decoration: InputDecoration(labelText: "Password"),
+              obscureText: true,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardPage()),
+                );
+              },
+              child: Text("Login"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SignUpPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Sign Up")),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(decoration: InputDecoration(labelText: "Name")),
+            TextField(decoration: InputDecoration(labelText: "Email")),
+            TextField(
+              decoration: InputDecoration(labelText: "Password"),
+              obscureText: true,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardPage()),
+                );
+              },
+              child: Text("Sign Up"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DashboardPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Sustainable Village Dashboard")),
+      body: ListView(
+        children: [
+          ListTile(
+            leading: Icon(Icons.water),
+            title: Text("Water Conservation Projects"),
+            subtitle: Text("Learn how to save water in your village."),
+          ),
+          ListTile(
+            leading: Icon(Icons.solar_power),
+            title: Text("Solar Power Initiatives"),
+            subtitle: Text("Explore sustainable energy solutions."),
+          ),
+          ListTile(
+            leading: Icon(Icons.eco),
+            title: Text("Organic Farming"),
+            subtitle: Text("Promote eco-friendly agricultural practices."),
+          ),
+          ListTile(
+            leading: Icon(Icons.recycling),
+            title: Text("Waste Management"),
+            subtitle: Text("Learn about sustainable waste disposal."),
+          ),
+        ],
+      ),
+    );
+  }
+}
